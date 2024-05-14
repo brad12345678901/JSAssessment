@@ -1,0 +1,58 @@
+/*
+Assessment Requirements
+1. Create a variable that can hold a number of NFT's. What type of variable might this be?
+2. Create an object inside your mintNFT function that will hold the metadata for your NFTs. 
+   The metadata values will be passed to the function as parameters. When the NFT is ready, 
+   you will store it in the variable you created in step 1
+3. Your listNFTs() function will print all of your NFTs metadata to the console (i.e. console.log("Name: " + someNFT.name))
+4. For good measure, getTotalSupply() should return the number of NFT's you have created
+*/
+
+// create a variable to hold your NFT's
+let nftinv = [];
+// this function will take in some values as parameters, create an
+// NFT object using the parameters passed to it for its metadata, 
+// and store it in the variable above.
+function mintNFT (_name, _swordtype, _spcattkpattrn, _materialblade, _materialhandler) {
+    const sampleObj =  {
+        "Name":_name,
+        "SwordType":_swordtype,
+        "AttackType":_spcattkpattrn,
+        "BladeMaterial":_materialblade,
+        "HandleMaterial":_materialhandler
+    };
+    nftinv.push(sampleObj);
+    console.log("NFT "+sampleObj.Name+ " minted")
+}
+
+// create a "loop" that will go through an "array" of NFT's
+// and print their metadata with console.log()
+function listNFTs () {
+    console.log("LIST OF NFTs in the Inventory:");
+    for(i = 0; i < nftinv.length ; i++){
+        console.log((i+1)+": Name: ["+nftinv[i].Name+"]\t"+
+            "Sword Type: ["+nftinv[i].SwordType+"] "+
+            "Attack Type: ["+nftinv[i].AttackType+"] "+
+            "Blade/Handle Material: ["+nftinv[i].BladeMaterial+"/"+nftinv[i].HandleMaterial+"]"
+        );
+    }
+}
+
+// print the total number of NFTs we have minted to the console
+function getTotalSupply() {
+    return nftinv.length;
+}
+
+// call your functions below this line
+
+mintNFT("Excalibur","Straight Sword","Slash","Other","Gold");
+mintNFT("Iron Big Sword","Greatsword","Slash","Iron","Iron");
+mintNFT("Common Long Sword","Straight Sword","Slash","Iron","Wood");
+mintNFT("Muramasa","Katana","Slash/Pierce","Other","Other");
+mintNFT("Godskin Peeler","Rapier","Pierce","Other","Other");
+listNFTs();
+console.log("Number of NFTs present in your Inventory: "+getTotalSupply());
+//Sword Type: Straight Sword, Greatsword, Rapier, Scimatar, Dagger, Curved Sword, Katana
+//Attack Pattern: Pierce, Slash, Slash/Pierce
+//Blade Material: Iron, Gold, Diamond, Wood, Stone, Damascus, Other
+//Handle Material: Iron, Gold, Diamond, Wood, Stone, Damascus, Other
